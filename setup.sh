@@ -2,7 +2,7 @@
 
 echo "Copying Web Folders"
 rm -r html
-cp -r ../quorum-support/QuorumWebsite/html html
+cp -r ../quorum-website/QuorumWebsite/html html
 cp ../quorum-language/Quorum/Library/Compiled/Run/QuorumStandardLibrary.js html/script/QuorumStandardLibrary.js
 #Adding the files necessary for fonts from Plugins/GamePlugin/Native/Web to the html/script directory
 cp ../quorum-language/Plugins/GamePlugin/Native/Web/load.js html/script/load.js
