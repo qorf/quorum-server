@@ -151,3 +151,19 @@ The server requires your host machine ports to line up with the internal docker 
 This issue seems to come and go for me and random machines, and am not totally sure how to prevent it yet. 
 If you end up facing this as well, I suggest to try deleting Docker's Cached images.
 `docker builder prune -a`
+
+### docker-compose hangs on Droplet
+
+If docker compose is hanging on a droplet, it might indicate there is not enough entropy. We can check this by running:
+
+cat /proc/sys/kernel/random/entropy_avail
+
+To fix this, we can install haveged. We can do this with this command:
+
+apt-get install haveged
+
+### How do I install my backup database for the Quorum server on my local machine
+
+Get a copy of the schema or database, then run the following:
+
+docker exec -i database mysql -uroot -psecret stefika_sodbeans_users < backup.sql
