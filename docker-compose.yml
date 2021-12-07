@@ -19,15 +19,12 @@ services:
       - php
       - quorum_server
   quorum_server:
-    image: openjdk:8-jre-alpine
+    image: andreasstefik/quorum:9.5
     container_name: quorum_server
     expose:
       - "1269"
     command: sh -c "
-        cd Quorum 
-        && /usr/bin/java -Xmx2g -jar Quorum.jar -server"
-    volumes:
-      - ./Quorum:/Quorum
+        /usr/bin/java -Xmx2g -jar Quorum.jar -server"
   php:
     container_name: php
     build:
