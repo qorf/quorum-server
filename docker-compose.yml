@@ -5,7 +5,7 @@ services:
     image: nginx:1.20.1-alpine
     container_name: nginx
     volumes:
-      - ./html:/html
+      - ./quorum-website/QuorumWebsite/html:/html
       - ./conf/nginx/nginx-prod.conf:/etc/nginx/conf.d/default.conf
       - ./secret:/etc/ssl/quorum
     restart: unless-stopped
@@ -23,8 +23,19 @@ services:
     container_name: quorum_server
     expose:
       - "1269"
+    volumes:
+      - ./quorum-website:/quorum-website
     command: sh -c "
-        /usr/bin/java -Xmx2g -jar Quorum.jar -server"
+        cp /Quorum/Library/Compiled/Run/QuorumStandardLibrary.js ../quorum-website/QuorumWebsite/html/script/QuorumStandardLibrary.js
+        && cp /Quorum/Library/Compiled/Run/load.js ../quorum-website/QuorumWebsite/html/script/load.js
+        && cp /Quorum/Library/Compiled/Run/load.data ../quorum-website/QuorumWebsite/html/script/load.data
+        && cp /Quorum/Library/Compiled/Run/load.wasm ../quorum-website/QuorumWebsite/html/script/load.wasm
+        && cd ../quorum-website/QuorumWebsite/
+        && cd ../../Quorum
+        && /usr/bin/java -Xmx2g -jar Quorum.jar -documentLibrary
+        && cp Run/Documents/libraries.html ../../quorum-website/QuorumWebsite/html/libraries.html
+        && cp -r Run/Documents/Libraries ../../quorum-website/QuorumWebsite/html/Libraries
+        && /usr/bin/java -Xmx2g -jar Quorum.jar -server"
   php:
     container_name: php
     build:
