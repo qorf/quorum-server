@@ -39,6 +39,8 @@ services:
         - MYSQL_DATABASE
         - MYSQL_NAME
         - MYSQL_PORT
+        - MAILGUN_API_ENDPOINT
+        - MAILGUN_API_KEY
         - DOMAIN
     volumes:
       - ./html:/html
