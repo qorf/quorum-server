@@ -53,7 +53,7 @@ services:
         - MAILGUN_API_KEY
         - DOMAIN
     volumes:
-      - ./html:/html
+      - ./quorum-website/QuorumWebsite/html:/html
     links:
       - quorum_server
       - mysql
