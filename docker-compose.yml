@@ -31,6 +31,8 @@ services:
         && cp /Quorum/Library/Compiled/Run/load.data ../quorum-website/QuorumWebsite/html/script/load.data
         && cp /Quorum/Library/Compiled/Run/load.wasm ../quorum-website/QuorumWebsite/html/script/load.wasm
         && cd ../quorum-website/QuorumWebsite/
+        && find SourceCode -type f ! -name "main.quorum" -exec /usr/bin/java -Xmx2g -jar /Quorum/Quorum.jar -library /Quorum/Library SourceCode/main.quorum {} +
+        && /usr/bin/java -Xmx2g -jar Run/Default.jar
         && cd ../../Quorum
         && /usr/bin/java -Xmx2g -jar Quorum.jar -documentLibrary
         && cp Run/Documents/libraries.html ../../quorum-website/QuorumWebsite/html/libraries.html
