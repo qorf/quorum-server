@@ -167,3 +167,9 @@ apt-get install haveged
 Get a copy of the schema or database, then run the following:
 
 docker exec -i database mysql -uroot -psecret stefika_sodbeans_users < backup.sql
+
+### How do I make self-signed certificates on my local machine for testing?
+
+You can use the following command:
+
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -nodes -days 365
