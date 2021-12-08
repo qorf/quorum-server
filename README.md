@@ -173,3 +173,5 @@ docker exec -i database mysql -uroot -psecret stefika_sodbeans_users < backup.sq
 You can use the following command:
 
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -nodes -days 365
+
+This generates two files, key.pem and cert.pem, which are sufficiently for a self-signed certificate on a local machine. They go in the folder /secret.
