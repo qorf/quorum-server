@@ -5,3 +5,4 @@ quorum-website/
 .DS_Store
 **/.DS_Store
 .env
+downloads/

@@ -54,6 +54,7 @@ services:
         - DOMAIN
     volumes:
       - ./quorum-website/QuorumWebsite/html:/html
+      - ./downloads:/var/www/downloads
     links:
       - quorum_server
       - mysql
