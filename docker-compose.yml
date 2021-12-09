@@ -19,7 +19,7 @@ services:
       - php
       - quorum_server
   quorum_server:
-    image: andreasstefik/quorum:9.5
+    image: andreasstefik/quorum:9.5.1
     container_name: quorum_server
     expose:
       - "1269"
@@ -31,13 +31,13 @@ services:
         && cp /Quorum/Library/Compiled/Run/load.data ../quorum-website/QuorumWebsite/html/script/load.data
         && cp /Quorum/Library/Compiled/Run/load.wasm ../quorum-website/QuorumWebsite/html/script/load.wasm
         && cd ../quorum-website/QuorumWebsite/
-        && find SourceCode -type f ! -name "main.quorum" -exec /usr/bin/java -Xmx2g -jar /Quorum/Quorum.jar -library /Quorum/Library SourceCode/main.quorum {} +
-        && /usr/bin/java -Xmx2g -jar Run/Default.jar
+        && find SourceCode -type f ! -name "main.quorum" -exec java -Xmx2g -jar /Quorum/Quorum.jar -library /Quorum/Library SourceCode/main.quorum {} +
+        && java -Xmx2g -jar Run/Default.jar
         && cd ../../Quorum
-        && /usr/bin/java -Xmx2g -jar Quorum.jar -documentLibrary
+        && java -Xmx2g -jar Quorum.jar -documentLibrary
         && cp Run/Documents/libraries.html ../../quorum-website/QuorumWebsite/html/libraries.html
         && cp -r Run/Documents/Libraries ../../quorum-website/QuorumWebsite/html/Libraries
-        && /usr/bin/java -Xmx2g -jar Quorum.jar -server"
+        && java -Xmx2g -jar Quorum.jar -server"
   php:
     container_name: php
     build:
