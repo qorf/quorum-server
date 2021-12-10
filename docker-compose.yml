@@ -8,7 +8,7 @@ services:
       - ./quorum-website/QuorumWebsite/html:/html:ro
       - ./conf/nginx/nginx-prod.conf:/etc/nginx/conf.d/default.conf:ro
       - ./secret:/etc/ssl/quorum:ro
-      - ./etc/localtime:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
     ports:
       - "80:80"
@@ -26,7 +26,7 @@ services:
       - "1269"
     volumes:
       - ./quorum-website:/quorum-website
-      - ./etc/localtime:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
     command: sh -c "
         cp /Quorum/Library/Compiled/Run/QuorumStandardLibrary.js ../quorum-website/QuorumWebsite/html/script/QuorumStandardLibrary.js
         && cp /Quorum/Library/Compiled/Run/load.js ../quorum-website/QuorumWebsite/html/script/load.js
@@ -57,7 +57,7 @@ services:
     volumes:
       - ./quorum-website/QuorumWebsite/html:/html:ro
       - ./downloads:/var/www/downloads:ro
-      - ./etc/localtime:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
     links:
       - quorum_server
       - mysql
@@ -71,7 +71,7 @@ services:
         - MYSQL_DATABASE
     volumes:
       - mysqldata:/var/lib/mysql
-      - ./etc/localtime:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - "3306:3306"
 volumes:
