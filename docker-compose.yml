@@ -29,16 +29,16 @@ services:
       - /etc/localtime:/etc/localtime:ro
     command: sh -c "
         cp /Quorum/Library/Compiled/Run/QuorumStandardLibrary.js ../quorum-website/QuorumWebsite/html/script/QuorumStandardLibrary.js
-        && cp /Quorum/Library/Compiled/Run/load.js ../quorum-website/QuorumWebsite/html/script/load.js
-        && cp /Quorum/Library/Compiled/Run/load.data ../quorum-website/QuorumWebsite/html/script/load.data
-        && cp /Quorum/Library/Compiled/Run/load.wasm ../quorum-website/QuorumWebsite/html/script/load.wasm
-        && cd ../quorum-website/QuorumWebsite/
+        && cp /Quorum/Library/Compiled/Run/load.js /quorum-website/QuorumWebsite/html/script/load.js
+        && cp /Quorum/Library/Compiled/Run/load.data /quorum-website/QuorumWebsite/html/script/load.data
+        && cp /Quorum/Library/Compiled/Run/load.wasm /quorum-website/QuorumWebsite/html/script/load.wasm
+        && cd /quorum-website/QuorumWebsite/
         && find SourceCode -type f ! -name "main.quorum" -exec java -Xmx2g -jar /Quorum/Quorum.jar -library /Quorum/Library SourceCode/main.quorum {} +
         && java -Xmx2g -jar Run/Default.jar
-        && cd ../../Quorum
+        && cd /Quorum
         && java -Xmx2g -jar Quorum.jar -documentLibrary
-        && cp Run/Documents/libraries.html ../../quorum-website/QuorumWebsite/html/libraries.html
-        && cp -r Run/Documents/Libraries ../../quorum-website/QuorumWebsite/html/Libraries
+        && cp Run/Documents/libraries.html /quorum-website/QuorumWebsite/html/libraries.html
+        && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html/Libraries
         && java -Xmx2g -jar Quorum.jar -server"
   php:
     container_name: php
