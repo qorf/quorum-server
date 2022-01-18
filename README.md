@@ -27,12 +27,10 @@ The website clone must be done within quorum-server, as the setup scripts in the
 ## Quorum Website
 
 1. Clone the quorum-server repository
-
 2. Clone the quorum-website repository inside the quorum-server repository
-
 3. Either change the .yml file to use the non-production version of the conf file or generate self-signed certificates and place them in the folder named "secret." One command for doing this is listed in Common Issues.
-
-4. Use the terminal and go to the quorum-server location, then type docker-compose up. The -d may be used to run the server in daemon mode.
+4. Copy the default environment file for the local server and change it if used in production (e.g., cp env-dev .env).
+5. Use the terminal and go to the quorum-server location, then type docker-compose up. The -d may be used to run the server in daemon mode.
 
 
 ## Common Issues
