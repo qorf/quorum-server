@@ -60,22 +60,30 @@ If you end up facing this as well, I suggest to try deleting Docker's Cached ima
 
 If docker compose is hanging on a droplet, it might indicate there is not enough entropy. We can check this by running:
 
-cat /proc/sys/kernel/random/entropy_avail
+    cat /proc/sys/kernel/random/entropy_avail
 
 To fix this, we can install haveged. We can do this with this command:
 
-apt-get install haveged
+    apt-get install haveged
 
-### How do I install my backup database for the Quorum server on my local machine
+### Install Backup database on local machine or make backup file
 
-Get a copy of the schema or database, then run the following:
+To get a copy of the database run the following:
 
-docker exec -i database mysql -uroot -psecret stefika_sodbeans_users < backup.sql
+    docker exec -i database mysqldump -u <username> -p<password> stefika_sodbeans_users > backup.sql
+
+To get just the schema and not get data you can run this command: 
+
+    docker exec -i database mysqldump -u <username> -p<password> --no-data stefika_sodbeans_users > schema.sql   
+
+With a copy of the schema or database, run the following to install into your local machine:
+
+    docker exec -i database mysql -u <username> -p<password> stefika_sodbeans_users < backup.sql
 
 ### How do I make self-signed certificates on my local machine for testing?
 
 You can use the following command:
 
-openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -nodes -days 365
+    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -nodes -days 365
 
 This generates two files, key.pem and cert.pem, which are sufficiently for a self-signed certificate on a local machine. They go in the folder /secret.
