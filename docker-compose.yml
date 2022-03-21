@@ -55,6 +55,7 @@ services:
         - MAILGUN_API_ENDPOINT
         - MAILGUN_API_KEY
         - DOMAIN
+        - ADDRESS_SALT
     volumes:
       - ./quorum-website/QuorumWebsite/html:/html:ro
       - ./downloads:/var/www/downloads:ro
