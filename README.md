@@ -70,15 +70,15 @@ To fix this, we can install haveged. We can do this with this command:
 
 To get a copy of the database run the following:
 
-    docker exec -i database mysqldump -u <username> -p<password> stefika_sodbeans_users > backup.sql
+    docker exec -i database mysqldump -u<username> -p<password> stefika_sodbeans_users > backup.sql
 
 To get just the schema and not get data you can run this command: 
 
-    docker exec -i database mysqldump -u <username> -p<password> --no-data stefika_sodbeans_users > schema.sql   
+    docker exec -i database mysqldump -u<username> -p<password> --no-data stefika_sodbeans_users > schema.sql   
 
 With a copy of the schema or database, run the following to install into your local machine:
 
-    docker exec -i database mysql -u <username> -p<password> stefika_sodbeans_users < backup.sql
+    docker exec -i database mysql -u<username> -p<password> stefika_sodbeans_users < backup.sql
 
 ### How do I make self-signed certificates on my local machine for testing?
 
