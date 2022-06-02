@@ -21,7 +21,7 @@ services:
       - php
       - quorum_server
   quorum_server:
-    image: andreasstefik/quorum:9.8.0
+    image: andreasstefik/quorum:9.9.0
     container_name: quorum_server
     expose:
       - "1269"
