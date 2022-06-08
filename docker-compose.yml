@@ -41,6 +41,11 @@ services:
         && cp Run/Documents/libraries.html /quorum-website/QuorumWebsite/html/libraries.html
         && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html/Libraries
         && java -Xmx2g -jar Quorum.jar -server"
+  redis:
+    image: redis:7.0
+    container_name: redis
+    ports:
+      - "6379:6379"
   php:
     container_name: php
     build:
@@ -63,6 +68,7 @@ services:
     links:
       - quorum_server
       - mysql
+      - redis
   mysql:
     image: mariadb:10.6.3
     container_name: database

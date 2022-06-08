@@ -7,5 +7,7 @@ FROM php:8.0.9-fpm
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN apt-get update &&\
+    pecl install redis-5.3.7 &&\
+    docker-php-ext-enable redis &&\
     apt-get -y install curl libcurl4-openssl-dev &&\
     docker-php-ext-install curl
