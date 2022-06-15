@@ -56,6 +56,12 @@ This issue seems to come and go for me and random machines, and am not totally s
 If you end up facing this as well, I suggest to try deleting Docker's Cached images.
 `docker builder prune -a`
 
+### Use Redis on the PHP side 
+
+In the latest version of the Quorum server, [Redis](https://redis.io/) is used inside of the PHP module. If you are upgrading the server from a previous one, using docker-compose up -d will not include it, leading to errors. The PHP module needs a rebuild, which we can do with the following command:
+
+    docker-compose build --no-cache php
+
 ### docker-compose hangs on Droplet
 
 If docker compose is hanging on a droplet, it might indicate there is not enough entropy. We can check this by running:
