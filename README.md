@@ -93,3 +93,14 @@ You can use the following command:
     openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -nodes -days 365
 
 This generates two files, key.pem and cert.pem, which are sufficiently for a self-signed certificate on a local machine. They go in the folder /secret.
+
+### How do I make a local quorum version on my machine for testing a custom version of the standard library?
+
+We follow these steps:
+1. Clone the latest version of Quorum or do a pull on the branch of interest
+2. Run RunLibrary.quorum to generate the latest version and do a standard library override in Quorum Studio
+3. Close and restart Quorum Studio
+4. Set to Main.quorum and do a clean and build
+5. Run Quorum/build_local_image.sh in the quorum-language repository
+6. In docker-compose.yml, change image: andreasstefik/quorum:10.0.2 to image: local_quorum
+7. Do a normal docker-compose down and docker-compose up -d
