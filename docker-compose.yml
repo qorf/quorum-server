@@ -20,6 +20,7 @@ services:
     links:
       - php
       - quorum_server
+      - quorum_database_server
   quorum_server:
     image: andreasstefik/quorum:10.0.7
     container_name: quorum_server
@@ -41,6 +42,22 @@ services:
         && cp Run/Documents/libraries.html /quorum-website/QuorumWebsite/html/libraries.html
         && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html/Libraries
         && java -Xmx2g -jar Quorum.jar -server"
+  quorum_database_server:
+    image: andreasstefik/quorum-database-server:1.0.0
+    container_name: quorum_database_server
+    expose:
+      - "9746"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_NAME
+      - MYSQL_PORT
+    command: sh -c "
+        cd /QuorumDatabase
+        && java -Xmx2g -jar QuorumDatabase.jar"
   redis:
     image: redis:7.0
     container_name: redis
