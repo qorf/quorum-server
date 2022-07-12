@@ -43,7 +43,7 @@ services:
         && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html/Libraries
         && java -Xmx2g -jar Quorum.jar -server"
   quorum_database_server:
-    image: andreasstefik/quorum-database-server:1.0.0
+    image: local_quorum_database
     container_name: quorum_database_server
     expose:
       - "9746"
@@ -55,6 +55,9 @@ services:
       - MYSQL_DATABASE
       - MYSQL_NAME
       - MYSQL_PORT
+      - DOMAIN
+    links:
+      - mysql
     command: sh -c "
         cd /QuorumDatabase
         && java -Xmx2g -jar QuorumDatabase.jar"
