@@ -56,8 +56,13 @@ services:
       - MYSQL_NAME
       - MYSQL_PORT
       - DOMAIN
+      - MAILGUN_API_ENDPOINT
+      - MAILGUN_API_KEY
+      - ADDRESS_SALT
     links:
+      - quorum_server
       - mysql
+      - php
     command: sh -c "
         cd /QuorumDatabase
         && java -Xmx2g -jar QuorumDatabase.jar"
@@ -104,3 +109,6 @@ services:
       - "3306:3306"
 volumes:
   mysqldata: {}
+networks:
+  internal:
+    driver: bridge
