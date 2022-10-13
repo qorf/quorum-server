@@ -34,16 +34,13 @@ services:
         && cp /Quorum/Library/Compiled/Run/load.js /quorum-website/QuorumWebsite/html/script/load.js
         && cp /Quorum/Library/Compiled/Run/load.data /quorum-website/QuorumWebsite/html/script/load.data
         && cp /Quorum/Library/Compiled/Run/load.wasm /quorum-website/QuorumWebsite/html/script/load.wasm
-        && cd /quorum-website/QuorumWebsite/
-        && find SourceCode -type f ! -name "main.quorum" -exec java -Xmx2g -jar /Quorum/Quorum.jar -library /Quorum/Library SourceCode/main.quorum {} +
-        && java -Xmx2g -jar Run/Default.jar
         && cd /Quorum
         && java -Xmx2g -jar Quorum.jar -documentLibrary
         && cp Run/Documents/libraries.html /quorum-website/QuorumWebsite/html/libraries.html
         && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html/Libraries
         && java -Xmx2g -jar Quorum.jar -server"
   quorum_database_server:
-    image: local_quorum_database
+    image: andreasstefik/quorum-database-server:1.1.0
     container_name: quorum_database_server
     expose:
       - "9746"
@@ -59,6 +56,8 @@ services:
       - MAILGUN_API_ENDPOINT
       - MAILGUN_API_KEY
       - ADDRESS_SALT
+    volumes:
+      - ./quorum-website/QuorumWebsite/html:/QuorumDatabase/html
     links:
       - quorum_server
       - mysql
