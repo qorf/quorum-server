@@ -58,6 +58,7 @@ services:
       - ADDRESS_SALT
     volumes:
       - ./quorum-website/QuorumWebsite/html:/QuorumDatabase/html
+      - ./quorum-website/QuorumWebsite/examples:/QuorumDatabase/examples
     links:
       - quorum_server
       - mysql
