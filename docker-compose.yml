@@ -57,7 +57,7 @@ services:
       - MAILGUN_API_KEY
       - ADDRESS_SALT
     volumes:
-      - ./quorum-website/QuorumWebsite/html:/QuorumDatabase/html:ro
+      - ./quorum-website/QuorumWebsite/html:/QuorumDatabase/html
       - ./quorum-website/QuorumWebsite/examples:/QuorumDatabase/examples:ro
     links:
       - quorum_server
