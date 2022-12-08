@@ -40,7 +40,7 @@ services:
         && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html/Libraries
         && java -Xmx2g -jar Quorum.jar -server"
   quorum_database_server:
-    image: andreasstefik/quorum-database-server:1.2.1
+    image: andreasstefik/quorum-database-server:1.2.4
     container_name: quorum_database_server
     expose:
       - "9746"
