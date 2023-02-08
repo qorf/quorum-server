@@ -29,6 +29,7 @@ services:
     volumes:
       - ./quorum-website:/quorum-website
       - /etc/localtime:/etc/localtime:ro
+    restart: on-failure
     command: sh -c "
         cp /Quorum/Library/Compiled/Run/QuorumStandardLibrary.js ../quorum-website/QuorumWebsite/html/script/QuorumStandardLibrary.js
         && cp /Quorum/Library/Compiled/Run/load.js /quorum-website/QuorumWebsite/html/script/load.js
@@ -46,6 +47,7 @@ services:
       - "9746"
     volumes:
       - /etc/localtime:/etc/localtime:ro
+    restart: on-failure
     environment:
       - MYSQL_USER
       - MYSQL_PASSWORD
