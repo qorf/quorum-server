@@ -22,7 +22,7 @@ services:
       - quorum_server
       - quorum_database_server
   quorum_server:
-    image: andreasstefik/quorum:10.9.2
+    image: andreasstefik/quorum:10.9.3
     container_name: quorum_server
     expose:
       - "1269"
@@ -41,12 +41,10 @@ services:
         && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html/Libraries
         && java -Xmx2g -jar Quorum.jar -server"
   quorum_database_server:
-    image: andreasstefik/quorum-database-server:1.4.2
+    image: andreasstefik/quorum-database-server:1.4.3
     container_name: quorum_database_server
     expose:
       - "9746"
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
     restart: on-failure
     environment:
       - MYSQL_USER
@@ -59,6 +57,7 @@ services:
       - MAILGUN_API_KEY
       - ADDRESS_SALT
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./quorum-website/QuorumWebsite/html:/QuorumDatabase/html
       - ./quorum-website/QuorumWebsite/examples:/QuorumDatabase/examples:ro
     links:
