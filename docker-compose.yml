@@ -42,7 +42,7 @@ services:
         && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html
         && java -Xmx2g -jar Quorum.jar -server"
   quorum_database_server:
-    image: andreasstefik/quorum-database-server:2.0.0
+    image: andreasstefik/quorum-database-server:2.0.1
     #image: local_quorum_database
     container_name: quorum_database_server
     expose:
