@@ -37,9 +37,6 @@ services:
         && cp /Quorum/Library/Compiled/Run/load.data /quorum-website/QuorumWebsite/html/script/load.data
         && cp /Quorum/Library/Compiled/Run/load.wasm /quorum-website/QuorumWebsite/html/script/load.wasm
         && cd /Quorum
-        && java -Xmx2g -jar Quorum.jar -documentLibrary
-        && cp Run/Documents/libraries.html /quorum-website/QuorumWebsite/html/libraries.html
-        && cp -R Run/Documents/Libraries /quorum-website/QuorumWebsite/html
         && java -Xmx2g -jar Quorum.jar -server"
   quorum_database_server:
     image: andreasstefik/quorum-database-server:2.1.0
