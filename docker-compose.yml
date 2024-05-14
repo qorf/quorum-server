@@ -39,7 +39,7 @@ services:
         && cd /Quorum
         && java -Xmx2g -jar Quorum.jar -server"
   quorum_database_server:
-    image: andreasstefik/quorum-database-server:2.1.1
+    image: andreasstefik/quorum-database-server:2.1.2
     #image: local_quorum_database
     container_name: quorum_database_server
     expose:
@@ -65,6 +65,8 @@ services:
       - php
     command: sh -c "
         cd /QuorumDatabase
+        && cp -r /QuorumDatabase/Libraries /QuorumDatabase/html/
+        && cp /QuorumDatabase/libraries.html /QuorumDatabase/html/
         && java -Xmx2g -jar QuorumDatabase.jar"
   redis:
     image: redis:7.0
