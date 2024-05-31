@@ -23,7 +23,7 @@ services:
       - quorum_database_server
   quorum_server:
     image: andreasstefik/quorum:12.0.1
-    image: local_quorum
+    #image: local_quorum
     container_name: quorum_server
     expose:
       - "1269"
