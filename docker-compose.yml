@@ -59,6 +59,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./quorum-website/QuorumWebsite/html:/QuorumDatabase/html
       - ./quorum-website/QuorumWebsite/examples:/QuorumDatabase/examples:ro
+      - ./quorum-website/WebBlockEditor/:/QuorumDatabase/blocks
     links:
       - quorum_server
       - mysql
@@ -67,6 +68,7 @@ services:
         cd /QuorumDatabase
         && cp -r /QuorumDatabase/Libraries /QuorumDatabase/html/
         && cp /QuorumDatabase/libraries.html /QuorumDatabase/html/
+        && cp /QuorumDatabase/blocks/blockEditor.js /QuorumDatabase/html/script/blockEditor.js
         && java -Xmx2g -jar QuorumDatabase.jar"
   redis:
     image: redis:7.0
