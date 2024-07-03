@@ -59,6 +59,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./quorum-website/QuorumWebsite/html:/QuorumDatabase/html
       - ./quorum-website/QuorumWebsite/examples:/QuorumDatabase/examples:ro
+      - ./quorum-website/QuorumWebsite/html/icons:/QuorumDatabase/icons:ro
       - ./quorum-website/WebBlockEditor/:/QuorumDatabase/blocks
     links:
       - quorum_server
