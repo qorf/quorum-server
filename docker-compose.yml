@@ -22,7 +22,7 @@ services:
       - quorum_server
       - quorum_database_server
   quorum_server:
-    image: andreasstefik/quorum:13.0.2
+    image: andreasstefik/quorum:13.0.3
     #image: local_quorum
     container_name: quorum_server
     expose:
@@ -39,7 +39,7 @@ services:
         && cd /Quorum
         && java -Xmx2g -jar Quorum.jar -server"
   quorum_database_server:
-    image: andreasstefik/quorum-database-server:3.0.0
+    image: andreasstefik/quorum-database-server:3.0.1
     #image: local_quorum_database
     container_name: quorum_database_server
     expose:
