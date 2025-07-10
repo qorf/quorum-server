@@ -41,7 +41,7 @@ services:
   quorum_database_server:
     image: andreasstefik/quorum-database-server:3.1.2
     #image: local_quorum_database
-    #container_name: quorum_database_server
+    container_name: quorum_database_server
     expose:
       - "9746"
     restart: on-failure
