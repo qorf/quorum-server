@@ -19,7 +19,6 @@ services:
       - "80"
       - "443"
     links:
-      - php
       - quorum_server
       - quorum_database_server
   quorum_server:
@@ -67,7 +66,6 @@ services:
     links:
       - quorum_server
       - mysql
-      - php
     command: sh -c "
         cd /QuorumDatabase
         && cp -r /QuorumDatabase/Libraries /QuorumDatabase/html/
@@ -79,29 +77,6 @@ services:
     container_name: redis
     expose:
       - "6379"
-  php:
-    container_name: php
-    build:
-      context: .
-      dockerfile: ./conf/php/PHP.Dockerfile
-    environment:
-        - MYSQL_USER
-        - MYSQL_PASSWORD
-        - MYSQL_DATABASE
-        - MYSQL_NAME
-        - MYSQL_PORT
-        - MAILGUN_API_ENDPOINT
-        - MAILGUN_API_KEY
-        - DOMAIN
-        - ADDRESS_SALT
-        - TZ=America/Los_Angeles
-    volumes:
-      - ./quorum-website/QuorumWebsite/html:/html:ro
-      - ./downloads:/var/www/downloads:ro
-    links:
-      - quorum_server
-      - mysql
-      - redis
   mysql:
     image: mariadb:10.6.3
     container_name: database
