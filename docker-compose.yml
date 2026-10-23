@@ -88,8 +88,8 @@ services:
         - TZ=America/Los_Angeles
     volumes:
       - mysqldata:/var/lib/mysql
-    ports:
-      - "3306:3306"
+    expose:
+      - "3306"
 volumes:
   mysqldata: {}
 networks:
